@@ -28,3 +28,5 @@ product_3 = Product.create(
   image_url: "https://media.istockphoto.com/id/471951938/photo/blue-t-shirt-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=pyxmdKWcO5rlVGIb7f2YCAlRC_imespbWs0ixWjOo4A=",
   description: "Light blue tee perfect for summer!"
 )
+
+puts "Successfully added first 3 products to seeds."

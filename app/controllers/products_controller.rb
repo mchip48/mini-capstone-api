@@ -2,17 +2,17 @@ class ProductsController < ApplicationController
 
   def red_sweatshirt
     @product = Product.first
-    render json: @product
+    render template: "products/show"
   end
 
   def orange_hat
     @product = Product.second
-    render json: @product
+    render template: "products/show"
   end
 
   def blue_shirt
     @product = Product.last
-    render json: @product
+    render template: "products/show"
   end
 
   def all_products

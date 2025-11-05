@@ -10,6 +10,11 @@ class Product < ApplicationRecord
   def tax
     tax_result = price * 0.09
     formatted_tax_result = sprintf("%.2f", tax_result)
-    return  "You'll pay $#{formatted_tax_result} in taxes"
+    return formatted_tax_result.to_i
+  end
+
+  def total
+    total_price = price + tax.to_i
+    return sprintf('%.2f', total_price).to_i
   end
 end

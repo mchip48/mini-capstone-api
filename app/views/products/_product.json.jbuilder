@@ -1,5 +1,7 @@
 json.id product.id
 json.name product.name
 json.price product.price
+json.taxes product.tax
+json.is_discounted product.is_discounted?
 json.image product.image_url
 json.information product.description

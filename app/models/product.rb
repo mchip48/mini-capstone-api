@@ -17,4 +17,9 @@ class Product < ApplicationRecord
     total_price = price + tax.to_i
     return sprintf('%.2f', total_price).to_i
   end
+
+  def friendly_created_at
+    created_at.strftime("%b %e, %l:%M %p")
+  end
+  
 end

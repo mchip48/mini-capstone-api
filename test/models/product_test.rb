@@ -21,5 +21,9 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal "Oct 30,  2:37 AM", product.friendly_created_at
   end
 
+  test "friendly_updated_at" do
+    product = Product.new(updated_at: "Thu, 30 Oct 2025 02:37:14.567340000 UTC +00:00")
+    assert_equal "Oct 30,  2:37 AM", product.friendly_updated_at
+  end
   
 end

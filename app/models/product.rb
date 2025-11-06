@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  
   def is_discounted?
     if price <= 10
       true
@@ -21,5 +22,9 @@ class Product < ApplicationRecord
   def friendly_created_at
     created_at.strftime("%b %e, %l:%M %p")
   end
-  
+
+  def friendly_updated_at
+    updated_at.strftime("%b %e, %l:%M %p")
+  end
+
 end

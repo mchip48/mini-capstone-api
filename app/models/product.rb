@@ -1,5 +1,9 @@
 class Product < ApplicationRecord
-  
+
+  validates :price, numericality: { greater_than: 0 }
+
+  validate :name_and_inventory_presence
+
   def is_discounted?
     if price <= 10
       true
@@ -27,4 +31,12 @@ class Product < ApplicationRecord
     updated_at.strftime("%b %e, %l:%M %p")
   end
 
+  private
+
+  def name_and_inventory_presence
+    if name.blank? && inventory.blank?
+      errors.add(:base, "name and inventory must be present")
+    end
+  end
+  
 end

@@ -6,5 +6,6 @@ json.total_price product.total
 json.is_discounted product.is_discounted?
 json.image product.image_url
 json.information product.description
+json.inventory_count product.inventory
 json.date_created product.friendly_created_at
 json.date_updated product.friendly_updated_at

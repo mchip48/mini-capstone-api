@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 
-  validates :price, numericality: { greater_than: 0 }
+  validates :price, numericality: { greater_than: 0, message: "price must be greater than 0" }
 
   validate :name_and_inventory_presence
 
@@ -38,5 +38,5 @@ class Product < ApplicationRecord
       errors.add(:base, "name and inventory must be present")
     end
   end
-  
+
 end

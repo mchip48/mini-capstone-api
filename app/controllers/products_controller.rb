@@ -16,7 +16,8 @@ class ProductsController < ApplicationController
       price: params[:price],
       image_url: params[:image_url],
       description: params[:description],
-      inventory: params[:inventory]
+      inventory: params[:inventory],
+      supplier_id: params[:supplier_id]
     )
     #   render template: "products/show"
     #  end
@@ -34,14 +35,15 @@ class ProductsController < ApplicationController
       name: params[:name] || @product.name,
       price: params[:price] || @product.price,
       image_url: params[:image_url] || @product.image_url,
-      description: params[:description] || @product.description
+      description: params[:description] || @product.description,
+      supplier_id: params[:supplier_id] || @product.supplier_id
     )
     render template: "products/show"
   end
 
   def destroy
-    @actor = Product.find(params[:id])
-    @actor.destroy
+    @product = Product.find(params[:id])
+    @product.destroy
 
     render json: { message: "Product was deleted!" }
   end

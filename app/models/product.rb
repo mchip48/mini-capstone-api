@@ -1,7 +1,8 @@
 class Product < ApplicationRecord
 
   validates :price, numericality: { greater_than: 0, message: "price must be greater than 0" }
-
+  validates :supplier_id, presence: true
+  
   validate :name_and_inventory_presence
 
   def is_discounted?

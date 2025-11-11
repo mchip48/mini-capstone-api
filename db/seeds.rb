@@ -8,25 +8,33 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+Product.destroy_all
+
 product_1 = Product.create(
   name: "Red Sweatshirt",
   price: 50,
   image_url: "https://media.istockphoto.com/id/154960461/photo/red-sweat-shirt-on-white-background.jpg?s=612x612&w=0&k=20&,c=qpFaTOu5Bse6HFEFzl0gYpNfTKU-akpmNlDMsIxu1sU=",
-  description: "Very fluffy red sweatshirt for fall!"
+  description: "Very fluffy red sweatshirt for fall!",
+  inventory: 50,
+  supplier_id: 1
 )
 
 product_2 = Product.create(
   name: "Orange Hat",
   price: 35,
   image_url: "https://media.istockphoto.com/id/498113633/photo/cap-orange.jpg?s=612x612&w=0&k=20&c=ddjyXSdvPbrj4OTw_1gIPmdE4q1eVx0bOz3WrkiYKOQ=",
-  description: "Bright orange hat so that you won't be missed in a crowd!"
+  description: "Bright orange hat so that you won't be missed in a crowd!",
+  inventory: 500,
+  supplier_id: 1
 )
 
 product_3 = Product.create(
   name: "Light Blue T-Shirt",
   price: 25,
   image_url: "https://media.istockphoto.com/id/471951938/photo/blue-t-shirt-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=pyxmdKWcO5rlVGIb7f2YCAlRC_imespbWs0ixWjOo4A=",
-  description: "Light blue tee perfect for summer!"
+  description: "Light blue tee perfect for summer!",
+  inventory: 130,
+  supplier_id: 1
 )
 
 puts "Successfully added first 3 products to seeds."

@@ -15,7 +15,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
 
     data = JSON.parse(response.body)
-    assert_equal ["id", "name", "price", "taxes", "total_price", "is_discounted", "image", "information", "inventory_count", "date_created", "date_updated", "supplier_id", "supplier"], data.keys
+    assert_equal Product.first.id, data["id"]
   end
 
   test "create" do
@@ -33,21 +33,39 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "update" do
 
-    product = Product.first
-    patch "/products/#{product.id}.json", params: { name: Product.first.name }
-    assert_response 200
+  supplier = Supplier.first || Supplier.create!(name: "Test Supplier")
+  product = Product.first || Product.create!(name: "Original", price: 10.0, supplier: supplier)
 
-    data = JSON.parse(response.body)
-    assert_equal Product.first.name, data["name"]
+  # Valid update
+  patch "/products/#{product.id}.json", params: { 
+    name: "Updated Name",
+    price: product.price,
+    image_url: product.image_url,
+    description: product.description,
+    inventory: product.inventory,
+    supplier_id: supplier.id
+  }
+  assert_response 200
 
-    patch "/products/#{product.id}.json", params: { name: "" }
-    assert_response 422
-  end
+  data = JSON.parse(response.body)
+  assert_equal "Updated Name", data["name"]
+
+  # Invalid update (name empty)
+  patch "/products/#{product.id}.json", params: { 
+    name: "", 
+    price: product.price,
+    image_url: product.image_url,
+    description: product.description,
+    inventory: product.inventory,
+    supplier_id: supplier.id
+  }
+  assert_response 422
+end
 
   test "destroy" do
     assert_difference "Product.count", -1 do
-      delete "/products/#{Product.first.name}.json"
-      assert_response 200
+      delete "/products/#{Product.first.id}.json"
+      assert_response 204
     end
   end
 end

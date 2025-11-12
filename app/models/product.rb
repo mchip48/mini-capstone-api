@@ -18,6 +18,7 @@ class Product < ApplicationRecord
   end
 
   def tax
+    return 0 unless price
     tax_result = price * 0.09
     formatted_tax_result = sprintf("%.2f", tax_result)
     return formatted_tax_result.to_i

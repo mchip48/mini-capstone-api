@@ -5,6 +5,10 @@ class Product < ApplicationRecord
   
   validate :name_and_inventory_presence
 
+  def supplier
+    Supplier.find_by(id: supplier_id)
+  end
+
   def is_discounted?
     if price <= 10
       true
